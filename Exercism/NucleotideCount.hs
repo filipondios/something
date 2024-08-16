@@ -6,8 +6,8 @@ data Nucleotide = A | C | G | T deriving (Eq, Ord, Show)
 
 nucleotideCounts' :: String -> Either String (Map Nucleotide Int) -> Either String (Map Nucleotide Int)
 nucleotideCounts' [] nucMap = nucMap
-nucleotideCounts' (x:xs) maybeMap = 
-  case maybeMap of
+nucleotideCounts' (x:xs) eitherMap = 
+  case eitherMap of
   (Left err) -> Left err
   (Right nucMap) -> case x of 
     'A' -> nucleotideCounts' xs (Right (Map.insert A countA nucMap))
