@@ -1,4 +1,3 @@
-
 --- Day 2: I Was Told There Would Be No Math ---
 
 {- The elves are running low on wrapping paper, and so they need to submit an
@@ -24,7 +23,6 @@
  -
  - All numbers in the elves' list are in feet. How many total square feet of 
  - wrapping paper should they order? -}
-
 
 
 -- Returns a tuple (NextDimensions, NexrDimension) from a String.

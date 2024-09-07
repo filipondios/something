@@ -13,18 +13,18 @@ import qualified Data.Set as Set
  -
  - However, the elf back at the north pole has had a little too much eggnog,
  - and so his directions are a little off, and Santa ends up visiting some 
- - houses more than once. How many houses receive at least one present?
-
-For example:
-
-    > delivers presents to 2 houses: one at the starting location, and one 
-    to the east.
-    
-    ^>v< delivers presents to 4 houses in a square, including twice to the
-    house at his starting/ending location.
-    
-    ^v^v^v^v^v delivers a bunch of presents to some very lucky children at
-    only 2 houses. -}
+ - houses more than once. How many houses receive at least one present? 
+ -
+ - For example:
+ -    
+ -    > delivers presents to 2 houses: one at the starting location, and one 
+ -    to the east. 
+ -
+ -    ^>v< delivers presents to 4 houses in a square, including twice to the
+ -    house at his starting/ending location. 
+ -
+ -    ^v^v^v^v^v delivers a bunch of presents to some very lucky children at 
+ -    only 2 houses. -}
 
 
 type House = (Int, Int) -- We only need a house's coordinates 
