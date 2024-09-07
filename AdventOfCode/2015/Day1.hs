@@ -31,19 +31,55 @@ import System.IO (readFile)
  - ()) and ))( both result in floor -1 (the first basement level).
  - ))) and )())()) both result in floor -3. -}
 
-calculateFloor' :: String -> Int -> Int 
-calculateFloor' [] acFloor = acFloor
-calculateFloor' (x:xs) acFloor = 
-  case x of 
-    '(' -> calculateFloor' xs (acFloor+1)
-    ')' -> calculateFloor' xs (acFloor-1)
-    _ -> calculateFloor' xs acFloor
+
+calculateFloor' :: Int -> String -> Int 
+calculateFloor' acFloor [] = acFloor
+calculateFloor' acFloor (x:xs) 
+  | x == '(' = calculateFloor' (acFloor+1) xs
+  | x == ')' = calculateFloor' (acFloor-1) xs
+  | otherwise = calculateFloor' acFloor xs
+
 
 calculateFloor :: String -> Int 
-calculateFloor xs = calculateFloor' xs 0
+calculateFloor = calculateFloor' 0
 
-main :: IO ()
-main = do 
+
+partOne :: IO ()
+partOne = do 
   let filePath = "./Day1.input"
   content <- readFile filePath
   print $ calculateFloor content
+
+
+--- Part Two ---
+
+{- Now, given the same instructions, find the position of the first character 
+ - that causes him to enter the basement (floor -1). The first character in 
+ - the instructions has position 1, the second character has position 2, and 
+ - so on. 
+ -
+ - For example: 
+ -    `)` causes him to enter the basement at character position 1. 
+ -    `()())` causes him to enter the basement at character position 5. 
+ -
+ -  What is the position of the character that causes Santa to first enter 
+ -  the basement? -}
+
+
+calculatePosition' :: Int -> Int -> String -> Int 
+calculatePosition' pos _ [] = pos
+calculatePosition' pos acFloor (x:xs) 
+  | x == ')' = if acFloor == 0 then pos else calculatePosition' (pos+1) (acFloor-1) xs 
+  | x == '(' = calculatePosition' (pos+1) (acFloor+1) xs
+  | otherwise = calculatePosition' pos acFloor xs
+
+
+calculatePosition :: String -> Int 
+calculatePosition = calculatePosition' 1 0
+
+
+partTwo :: IO ()
+partTwo = do 
+  let filePath = "./Day1.input"
+  content <- readFile filePath
+  print $ calculatePosition content
