@@ -10,24 +10,24 @@ type Day2Tests () =
 
     [<TestMethod>]
     member this.Day2Part1Tests() = 
-        Assert.IsTrue(([|"2x3x4"|] |> CalculateWrappingSquareFeet) = 58);
-        Assert.IsTrue(([|"1x1x10"|] |> CalculateWrappingSquareFeet) = 43);
-        Assert.IsTrue(([|"2x3x4";"1x1x10"|] |> CalculateWrappingSquareFeet) = 101);
+        Assert.IsTrue(([|"2x3x4"|] |> calculateWrappingSquareFeet) = 58);
+        Assert.IsTrue(([|"1x1x10"|] |> calculateWrappingSquareFeet) = 43);
+        Assert.IsTrue(([|"2x3x4";"1x1x10"|] |> calculateWrappingSquareFeet) = 101);
 
     [<TestMethod>]
     member this.Day2Part1() =
         let path = Path.Combine("../../../", "Day2/input")
         let content = File.ReadAllLines path
-        printf $"{(content |> CalculateWrappingSquareFeet)}\n"
+        printf $"{(content |> calculateWrappingSquareFeet)}\n"
 
     [<TestMethod>]
     member this.Day2Part2Tests() = 
-        Assert.IsTrue(([|"2x3x4"|] |> CalculateRibbonFeet) = 34);
-        Assert.IsTrue(([|"1x1x10"|] |> CalculateRibbonFeet) = 14);
-        Assert.IsTrue(([|"2x3x4";"1x1x10"|] |> CalculateRibbonFeet) = 48);
+        Assert.IsTrue(([|"2x3x4"|] |> calculateRibbonFeet) = 34);
+        Assert.IsTrue(([|"1x1x10"|] |> calculateRibbonFeet) = 14);
+        Assert.IsTrue(([|"2x3x4";"1x1x10"|] |> calculateRibbonFeet) = 48);
 
     [<TestMethod>]
     member this.Day2Part2() =
         let path = Path.Combine("../../../", "Day2/input")
         let content = File.ReadAllLines path
-        printf $"{(content |> CalculateRibbonFeet)}"
+        printf $"{(content |> calculateRibbonFeet)}"

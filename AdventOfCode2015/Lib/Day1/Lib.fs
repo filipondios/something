@@ -11,15 +11,14 @@ module Day1 =
     /// parenthesis, ), means he should go down one floor.
 
     module Part1 =
-        let CalculateFinalFloor (path: string) =
-            let mutable floor = 0
-            for c in path do 
-                match c with
-                | '(' -> floor <- floor + 1
-                | ')' -> floor <- floor - 1
-                | _ -> ()
-            floor
-
+        let calculateFinalFloor (path: string) =
+            Array.fold (fun floor char ->
+                match char with
+                | '(' -> floor + 1
+                | ')' -> floor - 1
+                | _ -> floor
+            ) 0 (path.ToCharArray()) 
+            
 
     /// Now, given the same instructions, find the position of the first character 
     /// that causes him to enter the basement (floor -1). The first character in 
@@ -27,7 +26,7 @@ module Day1 =
     /// so on.
 
     module Part2 = 
-        let CalculateBasementPosition (path: string) =
+        let calculateBasementPosition (path: string) =
             let mutable position = 0
             let mutable floor = 0
 

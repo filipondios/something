@@ -10,31 +10,31 @@ type Day1Tests () =
 
     [<TestMethod>]
     member this.Day1Part1Tests() =
-        Assert.IsTrue(("(())" |> CalculateFinalFloor) = 0);
-        Assert.IsTrue(("()()" |> CalculateFinalFloor) = 0);
-        Assert.IsTrue(("(((" |> CalculateFinalFloor) = 3);
-        Assert.IsTrue(("(()(()(" |> CalculateFinalFloor) = 3);
-        Assert.IsTrue(("))(((((" |> CalculateFinalFloor) = 3);
-        Assert.IsTrue(("())" |> CalculateFinalFloor) = -1);
-        Assert.IsTrue(("))(" |> CalculateFinalFloor) = -1);
-        Assert.IsTrue((")))" |> CalculateFinalFloor) = -3);
-        Assert.IsTrue((")())())" |> CalculateFinalFloor) = -3);
+        Assert.IsTrue(("(())" |> calculateFinalFloor) = 0);
+        Assert.IsTrue(("()()" |> calculateFinalFloor) = 0);
+        Assert.IsTrue(("(((" |> calculateFinalFloor) = 3);
+        Assert.IsTrue(("(()(()(" |> calculateFinalFloor) = 3);
+        Assert.IsTrue(("))(((((" |> calculateFinalFloor) = 3);
+        Assert.IsTrue(("())" |> calculateFinalFloor) = -1);
+        Assert.IsTrue(("))(" |> calculateFinalFloor) = -1);
+        Assert.IsTrue((")))" |> calculateFinalFloor) = -3);
+        Assert.IsTrue((")())())" |> calculateFinalFloor) = -3);
 
     [<TestMethod>]
     member this.Day1Part1() =
         let path = Path.Combine("../../../", "Day1/input")
         let content = File.ReadAllText path
         // No more tests here, just print
-        printf $"{(content |> CalculateFinalFloor)}"
+        printf $"{(content |> calculateFinalFloor)}"
 
     [<TestMethod>]
     member this.Day1Part2Tests() = 
-        Assert.IsTrue((")" |> CalculateBasementPosition) = 1);
-        Assert.IsTrue(("()())" |> CalculateBasementPosition) = 5);
+        Assert.IsTrue((")" |> calculateBasementPosition) = 1);
+        Assert.IsTrue(("()())" |> calculateBasementPosition) = 5);
 
     [<TestMethod>]
     member this.Day1Part2() =
         let path = Path.Combine("../../../", "Day1/input")
         let content = File.ReadAllText path
         // No more tests here, just print
-        printf $"{(content |> CalculateBasementPosition)}"
+        printf $"{(content |> calculateBasementPosition)}"
