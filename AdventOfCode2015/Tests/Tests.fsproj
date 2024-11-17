@@ -9,8 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Day2\input" />
+    <Compile Include="Day2\Tests.fs" />
     <None Include="Day1\input" />
-    <Compile Include="Day1\Test.fs" />
+    <Compile Include="Day1\Tests.fs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +24,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lib\Lib.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Day3\" />
   </ItemGroup>
 
 </Project>

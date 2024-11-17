@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Day2\Lib.fs" />
     <Compile Include="Day1\Lib.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Day3\" />
   </ItemGroup>
 
 </Project>
