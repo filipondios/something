@@ -23,13 +23,14 @@ type Day5Tests () =
         printf $"{(content |> calculateTotalNiceStrings)}"
 
     [<TestMethod>]
-    member this.Day5Part2Tests() = ()
-        //Assert.IsTrue((")" |> calculateBasementPosition) = 1);
-        //Assert.IsTrue(("()())" |> calculateBasementPosition) = 5);
+    member this.Day5Part2Tests() =
+        Assert.IsTrue(([|"qjhvhtzxzqqjkmpb"|] |> calculateTotalNiceStrings') = 1)
+        Assert.IsTrue(([|"xxyxx"|] |> calculateTotalNiceStrings') = 1)
+        Assert.IsTrue(([|"uurcxstgmygtbstg"|] |> calculateTotalNiceStrings') = 0)
+        Assert.IsTrue(([|"ieodomkazucvgmuy"|] |> calculateTotalNiceStrings') = 0)
 
     [<TestMethod>]
-    member this.Day5Part2() = ()
-        //let path = Path.Combine("../../../", "Day1/input")
-        //let content = File.ReadAllText path
-        // No more tests here, just print
-        //printf $"{(content |> calculateBasementPosition)}"
+    member this.Day5Part2() =
+        let path = Path.Combine("../../../", "Day5/input")
+        let content = File.ReadAllLines path
+        printf $"{(content |> calculateTotalNiceStrings')}"

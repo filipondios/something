@@ -91,4 +91,61 @@ module Day5 =
           else acc
       ) 0
 
-  module Part2 = ()
+
+  /// --- Part Two ---
+  ///
+  /// Realizing the error of his ways, Santa has switched to a better model of 
+  /// determining whether a string is naughty or nice. None of the old rules 
+  /// apply, as they are all clearly ridiculous.
+  /// 
+  /// Now, a nice string is one with all of the following properties:
+  /// 
+  /// - It contains a pair of any two letters that appears at least twice in
+  ///   the string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but 
+  ///   not like aaa (aa, but it overlaps).
+  /// - It contains at least one letter which repeats with exactly one letter
+  ///   between them, like xyx, abcdefeghi (efe), or even aaa.
+  ///
+  /// For example:
+  /// - qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj) 
+  ///   and a letter that repeats with exactly one letter between them (zxz).
+  /// - xxyxx is nice because it has a pair that appears twice and a letter 
+  ///   that repeats with one between, even though the letters used by each 
+  ///   rule overlap.
+  /// - uurcxstgmygtbstg is naughty because it has a pair (tg) but no repeat 
+  ///   with a single letter between them.
+  /// - ieodomkazucvgmuy is naughty because it has a repeating letter with one
+  ///   between (odo), but no pair that appears twice.
+  
+  module Part2 = 
+
+    let isNiceString' (s: string) =
+      let mutable rule1 = false;
+      let mutable rule2 = false;
+      let mutable lastRule1 = -1;
+      let mutable i = 1
+
+      while i < s.Length - 1 do 
+        if (s[i] = s[i-1]) && (not (lastRule1 = i-1)) then
+          rule1 <- true
+          lastRule1 <- i
+        else ()
+
+        if s[i-1] = s[i+1] then
+          rule2 <- true
+        else ()
+        i <- i + 1
+      
+      // Last index check if it complies with the first rule
+      if (s[s.Length-1] = s[s.Length-2]) && (not (lastRule1 = s.Length-2)) then
+        rule1 <- true
+      else ()
+      rule1 && rule2
+
+    let calculateTotalNiceStrings' (stringList: string array) = 
+      stringList |> Array.fold (fun acc (s: string) -> 
+        if s |> isNiceString'
+          then acc + 1
+          else acc
+      ) 0
+
