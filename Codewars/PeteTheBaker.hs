@@ -1,4 +1,3 @@
-import Data.List (find)
 type Ingredient = String
 type Amount     = Int
 type Recipe     = [(Ingredient, Amount)]
