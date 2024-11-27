@@ -120,26 +120,25 @@ module Day5 =
   module Part2 = 
 
     let isNiceString' (s: string) =
-      let mutable rule1 = false;
+      let mutable pairs: Set<char*char> = Set.empty;
+      let mutable lastPair = ('@','@')
       let mutable rule2 = false;
-      let mutable lastRule1 = -1;
+      let mutable rule1 = false;
       let mutable i = 1
 
-      while i < s.Length - 1 do 
-        if (s[i] = s[i-1]) && (not (lastRule1 = i-1)) then
-          rule1 <- true
-          lastRule1 <- i
-        else ()
+      while i <= s.Length - 1 do 
+        let pair = (s[i-1], s[i])
 
-        if s[i-1] = s[i+1] then
+        if (not rule1) && (pair <> lastPair) then
+          if pairs.Contains(pair) then
+            rule1 <- true
+          else 
+            pairs <- pairs.Add(pair)
+        lastPair <- pair
+
+        if (i < s.Length - 1) && (s[i-1] = s[i+1]) then
           rule2 <- true
-        else ()
         i <- i + 1
-      
-      // Last index check if it complies with the first rule
-      if (s[s.Length-1] = s[s.Length-2]) && (not (lastRule1 = s.Length-2)) then
-        rule1 <- true
-      else ()
       rule1 && rule2
 
     let calculateTotalNiceStrings' (stringList: string array) = 
