@@ -1,6 +1,6 @@
 # Something (functional)
 
-This repository contains a collection of exercises and code snippets written in various **functional programming languages**, such as Haskell, F#, OCaml (and possibly others in the future).
+This repository contains a collection of exercises and code snippets written in various **functional programming languages**, such as [Haskell](https://github.com/haskell), [F#](https://github.com/dotnet/fsharp), [OCaml](https://github.com/ocaml) (and possibly others in the future).
 
 ## Structure
 
@@ -13,5 +13,4 @@ The repository is organized as follows:
 
 ## Purpose
 
-This is simply a repository where I keep my solutions to programming challenges from various problem-solving platforms.  
-I make it available in case anyone is interested in seeing how I approached and solved these problems using functional programming.
+This is simply a repository where I keep my solutions to programming challenges from various problem-solving platforms. I make it available in case anyone is interested in seeing how I approached and solved these problems using functional programming.
